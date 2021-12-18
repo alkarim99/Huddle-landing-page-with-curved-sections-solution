@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fontawesome-web/css/all.css">
+  
+  <title>Frontend Mentor | Huddle landing page with curved sections</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      box-sizing: border-box;
+    }
+    button.started{
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      padding: 15px 50px;
+      background-color: hsl(322, 100%, 66%);
+      border: none;
+      border-radius: 50px;
+    }
+    button.started:hover{
+      background-color: hsl(321, 100%, 78%);
+    }
+
+    /*navbar*/
+    .navbar{
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar .try{
+      font-family: 'Open Sans', sans-serif;
+      color: hsl(322, 100%, 66%);
+      padding: 10px 30px;
+      background-color: #fff;
+      border: 1px solid hsl(322, 100%, 66%);
+      border-radius: 20px;
+    }
+    .navbar .try:hover{
+      color: hsl(321, 100%, 78%);
+      border: 1px solid hsl(321, 100%, 78%);
+    }
+
+    /*header*/
+    .header{
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .header .title{
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+    }
+    .header .desc{
+      width: 500px;
+      text-align: center;
+    }
+    .header .mockups{
+      padding: 30px 0;
+      height: 600px;
+    }
+    .header .stat{
+      width: 800px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .header .stat .numb{
+      margin: 0;
+      font-size: 70px;
+      font-weight: 700;
+    }
+    .header .stat .name{
+      text-align: center;
+    }
+
+    /*content*/
+    .content{
+      display: flex;
+      flex-direction: column;
+    }
+    .content .content-1, .content-2, .content-3{
+      padding: 40px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .content .content-1, .content-3{
+      background-color: hsl(207, 100%, 98%);
+    }
+    .content .content-2 img{
+      order: 1;
+    }
+    .content .content-2 .left{
+      order: 2;
+    }
+    .content img.section-top-desktop-1{
+      width: auto;
+      height: 165px;
+    }
+    .content img.section-bottom-desktop-1{
+      width: auto;
+      height: 139px;
+    }
+    .content img.section-top-desktop-2{
+      width: auto;
+      height: 165px;
+    }
+    .content img.section-bottom-desktop-2{
+      width: auto;
+      height: 139px;
+    }
+    .content img.section-top-mobile-1{
+      display: none;
+    }
+    .content img.section-bottom-mobile-1{
+      display: none;
+    }
+    .content img.section-top-mobile-2{
+      display: none;
+    }
+    .content img.section-bottom-mobile-2{
+      display: none;
+    }
+    .content .left{
+      width: 500px;
+    }
+    .content .title{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+    }
+    .content img{
+      height: 300px;
+    }
+
+    /*ready*/
+    .ready{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+    }
+    .ready .title{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    /*footer*/
+    .bawah{
+      display: flex;
+      flex-direction: column;
+    }
+    .bawah .footer{
+      margin: 0;
+      padding: 60px 0;
+      display: flex;
+      justify-content: space-around;
+      background-color: hsl(192, 100%, 9%);
+      color: #fff;
+    }
+    .bawah .footer .contact{
+      width: 500px;
+    }
+    .bawah .footer .contact .desc{
+      width: 350px;
+      line-height: 30px;
+    }
+    .bawah .footer .contact .contact-phone, .contact-email{
+      display: flex;
+      align-items: center;
+    }
+    .bawah .footer .contact .contact-email{
+      margin-bottom: 30px;
+    }
+    .bawah .footer .contact .phone, .email{
+      margin: 10px 0;
+    }
+    .bawah .footer .contact .icon-phone, .icon-email{
+      margin-right: 20px;
+    }
+    .bawah .footer .contact span{
+      margin-right: 20px;
+    }
+    .bawah .footer .contact span:hover{
+      color: Mediumslateblue;
+    }
+    .bawah .footer .newsletter{
+      width: 500px;
+    }
+    .bawah .footer .newsletter .title{
+      margin: 12px 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .bawah .footer .newsletter .desc{
+      margin: 12px 0;
+      width: 380px;
+      line-height: 30px;
+    }
+    .bawah .footer .newsletter input{
+      font-family: 'Open Sans', sans-serif;
+      padding-left: 10px;
+      margin-right: 20px;
+      border: none;
+      border-radius: 5px;
+      width: 300px;
+      height: 35px;
+    }
+    .bawah .footer .newsletter button{
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      background-color: hsl(322, 100%, 66%);
+    }
+    .bawah .footer .newsletter button:hover{
+      background-color: hsl(321, 100%, 78%);
+    }
+    .bawah .footer .newsletter .alert{
+      display: none;
+      color: hsl(322, 100%, 66%);
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    img.footer-top-desktop{
+      width: auto;
+      height: 158px;
+      margin: 0;
+    }
+    img.footer-top-mobile{
+      display: none;
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    
+    @media screen and (max-width: 375px) {
+      body{
+        box-sizing: border-box;
+      }
+
+      /*navbar*/
+      .navbar img{
+        width: 100px
+      }
+      .navbar .try{
+        padding: 5px 20px;
+        border-radius: 20px;
+      }
+
+      /*header*/
+      .header{
+        width: 350px;
+      }
+      .header .title{
+        text-align: center;
+        font-size: 28px;
+      }
+      .header .desc{
+        width: auto;
+        margin: 40px 0;
+      }
+      .header .mockups{
+        width: 330px;
+        height: auto;
+      }
+      .header .stat{
+        width: 350px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .header .stat div{
+        margin-bottom: 40px;
+      }
+
+      /*content*/
+      .content .content-1, .content-2, .content-3{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .content img.section-top-desktop-1{
+        display: none;
+      }
+      .content img.section-bottom-desktop-1{
+        display: none;
+      }
+      .content img.section-top-desktop-2{
+        display: none;
+      }
+      .content img.section-bottom-desktop-2{
+        display: none;
+      }
+      .content img.section-top-mobile-1{
+        display: block;
+        width: 375px;
+        height: 112px;
+      }
+      .content img.section-bottom-mobile-1{
+        display: block;
+        width: 375px;
+        height: 52px;
+      }
+      .content img.section-top-mobile-2{
+        display: block;
+        width: 375px;
+        height: 103px;
+      }
+      .content img.section-bottom-mobile-2{
+        display: block;
+        width: 375px;
+        height: 101px;
+      }
+      .content .left{
+        width: auto;
+      }
+      .content .title{
+        font-size: 20px;
+      }
+      .content img{
+        height: 200px;
+      }
+      .content .content-1 img, .content-2 img, .content-3 img{
+        order: 1;
+      }
+      .content .content-1 .left, .content-2 .left, .content-3 .left{
+        order: 2;
+      }
+
+      /*bawah*/
+      img.footer-top-desktop{
+        display: none;
+      }
+      img.footer-top-mobile{
+        display: block;
+        width: 375px;
+        height: 53px;
+        margin: 0;
+      }
+      .bawah .footer{
+        margin: 0;
+        padding: 60px 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .bawah .footer .contact{
+        width: 350px;
+        order: 2;
+      }
+      .bawah .footer .newsletter{
+        width: 350px;
+        order: 1;
+        margin-bottom: 100px;
+      }
+      .bawah .footer .newsletter .desc{
+        width: 350px;
+      }
+      .bawah .footer .newsletter form{
+        margin: 0;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .bawah .footer .newsletter input{
+        /*margin: 0 0 20px 0;*/
+        order: 1;
+      }
+      .bawah .footer .newsletter .alert{
+        display: none;
+        order: 2;
+        align-self: flex-start;
+        margin: 5px 0 0 10px;
+      }
+      .bawah .footer .newsletter button{
+        order: 3;
+        margin: 20px 25px 0 0;
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <img src="images/logo.svg" alt="logo" class="logo">
+    <button class="try">Try It Free</button>
+  </div>
+
+  <div class="header">
+    <p class="title">Build The Community Your Fans Will Love</p>
+    <p class="desc">Huddle re-imagines the way we build communities. You have a voice, but so does your audience. Create connections with your users as you engage in genuine discussion. </p>
+    <button class="started">Get Started For Free</button>
+    <img src="images/screen-mockups.svg" alt="mockups" class="mockups">
+    <div class="stat">
+      <div class="communities">
+        <img src="images/icon-communities.svg" alt="communities" class="icon">
+        <p class="numb">1.4k+</p>
+        <p class="name">Communities Formed</p>
+      </div>
+      <div class="sent">
+        <img src="images/icon-messages.svg" alt="messages" class="icon">
+        <p class="numb">2.7m+</p>
+        <p class="name">Messages Sent</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <img src="images/bg-section-top-desktop-1.svg" alt="section-top" class="section-top-desktop-1">
+    <img src="images/bg-section-top-mobile-1.svg" alt="section-top" class="section-top-mobile-1">
+    <div class="content-1">
+      <div class="left">
+        <p class="title">Grow Together</p>
+        <p class="desc">Generate meaningful discussions with your audience and build a strong, loyal community. Think of the insightful conversations you miss out on with a feedback form. </p>
+      </div>
+      <img src="images/illustration-grow-together.svg" alt="grow-together" class="grow-together">
+    </div>
+    <img src="images/bg-section-bottom-desktop-1.svg" alt="section-bottom" class="section-bottom-desktop-1">
+    <img src="images/bg-section-bottom-mobile-1.svg" alt="section-bottom" class="section-bottom-mobile-1">
+    <div class="content-2">
+      <div class="left">
+        <p class="title">Flowing Conversations</p>
+        <p class="desc">You wouldn't paginate a conversation in real life, so why do it online? Our threads have just-in-time loading for a more natural flow.</p>
+      </div>
+      <img src="images/illustration-your-users.svg" alt="flowing-conversations" class="flowing-conversations">
+    </div>
+    <img src="images/bg-section-top-desktop-2.svg" alt="section-top" class="section-top-desktop-2">
+    <img src="images/bg-section-top-mobile-2.svg" alt="section-top" class="section-top-mobile-2">
+    <div class="content-3">
+      <div class="left">
+        <p class="title">Your Users</p>
+        <p class="desc">It takes no time at all to integrate Huddle with your app's authentication solution. This means, once signed in to your app, your users can start chatting immediately.</p>
+      </div>
+      <img src="images/illustration-your-users.svg" alt="your-users" class="your-users">
+    </div>
+    <img src="images/bg-section-bottom-desktop-2.svg" alt="section-bottom" class="section-bottom-desktop-2">
+    <img src="images/bg-section-bottom-mobile-2.svg" alt="section-bottom" class="section-bottom-mobile-2">
+  </div>
+  
+  <div class="ready">
+    <p class="title">Ready To Build Your Community?</p>
+    <button class="started">Get Started For Free</button>
+  </div>
+  
+  <div class="bawah">
+    <img src="images/bg-footer-top-desktop.svg" alt="footer-top-desktop" class="footer-top-desktop">
+    <img src="images/bg-footer-top-mobile.svg" alt="footer-top-mobile" class="footer-top-mobile">
+    <div class="footer">
+      <div class="contact">
+        <img src="images/logo-footer.svg" alt="logo" class="logo-footer">
+        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nulla quam, hendrerit lacinia vestibulum a, ultrices quis sem.</p>
+        <div class="contact-phone">
+          <img src="images/icon-phone.svg" alt="icon-phone" class="icon-phone">
+          <p class="phone">Phone: +1-543-123-4567</p>
+        </div>
+        <div class="contact-email">
+          <img src="images/icon-email.svg" alt="icon-email" class="icon-email">
+          <p class="email">example@huddle.com</p>
+        </div>
+        <span><i class="fab fa-facebook-square fa-2x"></i></span>
+        <span><i class="fab fa-instagram fa-2x"></i></i></span>
+        <span><i class="fab fa-twitter-square fa-2x"></i></i></span>
+      </div>
+      <div class="newsletter">
+        <p class="title">NEWSLETTER</p>
+        <p class="desc">To recieve tips on how to grow your community, sign up to our weekly newsletter. We’ll never send you spam or pass on your email address</p>
+        <form action="#" id="my-form">
+          <input type="text" id="email">
+          <button type="submit" class="subscribe" id="submit">Subscribe</button>
+          <p class="alert">Check Your Email Please</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Abdullah Al-Karim</a>.
+    </p>
+  </footer>
+
+  <script type="text/javascript">
+    const myform = document.querySelector('#my-form');
+    const email = document.querySelector('#email');
+    const alert = document.querySelector('.alert');
+    const submit = document.querySelector('#submit');
+    myform.addEventListener('submit', onSubmit);
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    function onSubmit(e) {
+      e.preventDefault();
+      if (email.value=='') {
+        alert.style.display='block';
+      }
+      else if (email.value.match(mailformat)) {
+        alert.style.display='none';
+      }
+      else{
+        alert.style.display='block';
+      }
+    }
+  </script>
+</body>
+</html>
